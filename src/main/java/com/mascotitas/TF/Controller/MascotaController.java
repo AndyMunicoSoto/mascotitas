@@ -31,4 +31,11 @@ public class MascotaController {
         return new ResponseEntity<>(mascotaResponseResource, HttpStatus.OK);
     }
 
+    @PutMapping("/{mascotaId}")
+    public ResponseEntity<Mascota> updateMascota(@PathVariable Long mascotaId, @Valid @RequestBody Mascota mascotaResource)
+    {
+        Mascota mascotaResponseResource = mascotaService.updateMascota(mascotaId, mascotaResource);
+        return new ResponseEntity<>(mascotaResponseResource, HttpStatus.OK);
+    }
+
 }

@@ -1,9 +1,9 @@
 package com.mascotitas.TF.Controller;
 
 import com.mascotitas.TF.Service.CitasService;
-import com.mascotitas.TF.dto.CitasResponseDto;
+
 import com.mascotitas.TF.entity.Citas;
-import com.mascotitas.TF.entity.Veterinarios;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,5 +32,14 @@ public class CitasController {
         List<Citas> citasResponseResource = citasService.getAllCitas();
         return new ResponseEntity<>(citasResponseResource, HttpStatus.OK);
     }
+
+    @PutMapping("/{citaId}")
+    public ResponseEntity<Citas> updateCitas(@PathVariable Long citaId, @Valid @RequestBody Citas citasResource)
+    {
+        Citas citasResponseResource = citasService.updateCitas( citaId, citasResource );
+        return new ResponseEntity<>(citasResponseResource, HttpStatus.OK);
+
+    }
+
 
 }

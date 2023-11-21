@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,9 +25,18 @@ public class ExamenesController {
 
     }
 
+    @GetMapping
     public ResponseEntity<List<Examenes>> getAllExamenes()
     {
         List<Examenes> examenesResponseResource = examenesService.getAllExamenes();
         return new ResponseEntity<>(examenesResponseResource, HttpStatus.OK);
     }
+
+    @PutMapping("/{examenId}")
+    public ResponseEntity<Examenes> updateExamen( @PathVariable Long examenId, @Valid @RequestBody Examenes examenResource)
+    {
+        Examenes examen = examenesService.updateExamenes( examenId, examenResource);
+        return new ResponseEntity<>(examen, HttpStatus.OK);
+    }
+
 }

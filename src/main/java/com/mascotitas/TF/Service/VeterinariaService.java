@@ -27,7 +27,7 @@ public class VeterinariaService {
     }
 
     @Transactional
-    public Veterinaria update( Long veterinariaId, Veterinaria veteResource)
+    public Veterinaria updateV( Long veterinariaId, Veterinaria veteResource)
     {
         Optional<Veterinaria> optionalVeterinaria = veterinariaRepository.findById(veterinariaId);
         if (optionalVeterinaria.isPresent())

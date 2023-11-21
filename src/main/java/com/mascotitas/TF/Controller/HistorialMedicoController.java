@@ -32,4 +32,11 @@ public class HistorialMedicoController {
         return new ResponseEntity<>(historialMedicosResponseResource, HttpStatus.OK);
     }
 
+    @PutMapping("/{hmId}")
+    public ResponseEntity<Historial_medico> updateHM( @PathVariable Long hmId, @Valid @RequestBody Historial_medico hmResource )
+    {
+        Historial_medico hmResponseResource = historialMedicoService.updateHM(hmId, hmResource);
+        return new ResponseEntity<>(hmResponseResource, HttpStatus.OK);
+    }
+
 }

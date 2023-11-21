@@ -31,5 +31,11 @@ public class DuenioController {
         return  new ResponseEntity<>(duenioResponseResource, HttpStatus.OK);
     }
 
+    @PutMapping("/{duenioId}")
+    public ResponseEntity<Duenio> updateDuenio( @PathVariable Long duenioId, @Valid @RequestBody Duenio duenioResource )
+    {
+        Duenio duenioResponseResource = duenioService.updateDuenio(duenioId, duenioResource);
+        return new ResponseEntity<>(duenioResponseResource, HttpStatus.OK);
+    }
 
 }

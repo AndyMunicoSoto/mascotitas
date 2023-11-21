@@ -31,4 +31,11 @@ public class EspecialidadController {
         return new ResponseEntity<>(especialidadResponseResource, HttpStatus.OK);
     }
 
+    @PutMapping("/{especialidadId}")
+    public ResponseEntity<Especialidad> updateEspecialidad( @PathVariable Long especialidadId, @Valid @RequestBody Especialidad especialidadResource)
+    {
+        Especialidad especialidadResponseResource = especialidadService.updateEspecialidad(especialidadId, especialidadResource);
+        return new ResponseEntity<>(especialidadResponseResource, HttpStatus.OK);
+    }
+
 }

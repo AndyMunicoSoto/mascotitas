@@ -30,4 +30,12 @@ public class VeterinariosController {
         List<Veterinarios> veterinariosResponseResource = veterinariosService.getAllVeterinarios();
         return new ResponseEntity<>(veterinariosResponseResource, HttpStatus.OK);
     }
+
+    @PutMapping("/{veterinarioId}")
+    public ResponseEntity<Veterinarios> updateVeterinario(@PathVariable Long veterinarioId, @Valid @RequestBody Veterinarios veterinariosResource)
+    {
+        Veterinarios veterinariosResponseResouce = veterinariosService.updateVeterinarios(veterinarioId, veterinariosResource);
+        return new ResponseEntity<>(veterinariosResponseResouce, HttpStatus.OK);
+    }
+
 }
