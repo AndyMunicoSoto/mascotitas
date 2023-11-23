@@ -54,5 +54,16 @@ public class ExamenesService {
 
     }
 
+    @Transactional
+    public void deleteExamen( Long examenId)
+    {
+        if (!examenesRepository.existsById(examenId))
+        {
+            throw new ResourceNotFoundException("Examen not found with id: "+ examenId);
+
+        }
+
+        examenesRepository.deleteById(examenId);
+    }
 
 }

@@ -53,4 +53,16 @@ public class Historial_medicoService {
         }
     }
 
+    @Transactional
+    public void deletehm( Long hmId)
+    {
+        if (!historialMedicoRepository.existsById(hmId))
+        {
+            throw new ResourceNotFoundException("Historial Medico not found with id: "+ hmId);
+
+        }
+        historialMedicoRepository.deleteById(hmId);
+    }
+
+
 }

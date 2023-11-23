@@ -54,4 +54,17 @@ public class DuenioService {
         }
     }
 
+    @Transactional
+    public void deleteDuenio( Long duenioId)
+    {
+        if (!duenioRepository.existsById(duenioId))
+        {
+            throw new ResourceNotFoundException("Duenio not found with id: "+ duenioId);
+        }
+
+        duenioRepository.deleteById(duenioId);
+
+    }
+
+
 }

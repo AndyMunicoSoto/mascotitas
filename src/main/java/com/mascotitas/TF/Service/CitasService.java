@@ -55,4 +55,17 @@ public class CitasService {
         }
     }
 
+
+    @Transactional
+    public void deleteCita( Long citaId)
+    {
+        if(!citasRepository.existsById(citaId))
+        {
+            throw new ResourceNotFoundException("Cita not found with id: "+ citaId);
+        }
+
+        citasRepository.deleteById(citaId);
+
+    }
+
 }

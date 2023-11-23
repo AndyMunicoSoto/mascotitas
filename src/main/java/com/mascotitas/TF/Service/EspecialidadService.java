@@ -46,4 +46,18 @@ public class EspecialidadService {
 
 
     }
+
+    @Transactional
+    public void deleteEspecialidad( Long especialdiadId)
+    {
+        if (!especialidadRepository.existsById(especialdiadId))
+        {
+            throw new ResourceNotFoundException("Especialidad not found with id: "+ especialdiadId);
+
+        }
+
+        especialidadRepository.deleteById(especialdiadId);
+
+    }
+
 }

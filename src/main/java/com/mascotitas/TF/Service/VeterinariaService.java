@@ -49,4 +49,16 @@ public class VeterinariaService {
 
     }
 
+    @Transactional
+    public void deleteVeterinaria( Long veterinariaId)
+    {
+        if(!veterinariaRepository.existsById(veterinariaId))
+        {
+            throw new ResourceNotFoundException("Veterinaria not found with id: "+ veterinariaId);
+        }
+
+        veterinariaRepository.deleteById(veterinariaId);
+
+    }
+
 }

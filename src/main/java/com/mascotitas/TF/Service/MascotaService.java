@@ -55,4 +55,17 @@ public class MascotaService {
 
     }
 
+    @Transactional
+    public void deleteMascota( Long mascotaId)
+    {
+        if(!mascotaRepository.existsById(mascotaId))
+        {
+            throw new ResourceNotFoundException("mascota not found with id: "+ mascotaId);
+        }
+
+        mascotaRepository.deleteById(mascotaId);
+
+    }
+
+
 }
